@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List</title>
+    <link rel="stylesheet" href="songs.css">
+    <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+    <h1 align="center">歌曲列表</h1>
+    <hr>
+    <button id="addSongBtn" class="niceBtn">添加歌曲</button>
+    <button id="deleteSongBtn" class="niceBtn">删除歌曲</button>
+    <button id="editSongBtn" class="niceBtn">修改歌曲</button>
+    <button id="viewSongsBtn" class="niceBtn">查看歌曲</button>
+
+    <div id="add-song-section">
+        <h2>添加新歌曲</h2>
+        <form id="add-song-form">
+            <label for="add-song-id">歌曲 ID:</label>
+            <input type="text" id="add-song-id" name="song-id" required class="outer_div">
+            <label for="title">歌名:</label>
+            <input type="text" id="title" name="title" required class="outer_div">
+            <label for="artist">歌手:</label>
+            <input type="text" id="artist" name="artist" required class="outer_div"><br><p></p>
+            <label for="genre">歌曲类型:</label>
+            <select id="genre" name="genre" required class="outer_div" title="选择歌曲类型">
+                <option value="none">选择歌曲类型</option>
+                <option value="流行">流行</option>
+                <option value="民谣">民谣</option>
+                <option value="爵士">爵士</option>
+                <option value="古典">古典</option>
+                <option value="电子">电子</option>
+                <option value="说唱">说唱</option>
+                <option value="乡村">乡村</option>
+                <option value="蓝调">蓝调</option>
+                <option value="雷鬼">雷鬼</option>
+            </select>
+            <label for="playcount">播放量:</label>
+            <input type="number" id="playcount" name="playcount" inputmode="numeric" required class="outer_div"><br><p></p>
+            <button type="submit" class="niceBtn">添加歌曲</button>
+        </form>
+    </div>
+
+    <div id="delete-songs-section">
+        <h2>删除歌曲</h2>
+        <form id="delete-songs-form">
+            <label for="delete-song-id">歌曲 ID:</label>
+            <input type="text" id="delete-song-id" name="song-id">
+            <button type="submit" class="niceBtn">删除</button>
+        </form>
+    </div>
+
+    <div id="edit-songs-section">
+        <h2>修改歌曲</h2>
+        <form id="edit-songs-form">
+            <label for="edit-song-id">歌曲 ID:</label>
+            <input type="text" id="edit-song-id" name="song-id"><br>
+            <label for="edit-song-title">新歌名:</label>
+            <input type="text" id="edit-song-title" name="song-title"><br>
+            <label for="edit-song-artist">新歌手:</label>        
+            <input type="text" id="edit-song-artist" name="song-artist"><br>    
+            <label for="edit-song-genre">新类型:</label>
+            <select id="edit-song-genre" name="edit-song-genre" required class="outer_div" title="选择歌曲类型">
+                <option value="none">选择歌曲类型</option>
+                <option value="流行">流行</option>
+                <option value="民谣">民谣</option>
+                <option value="爵士">爵士</option>
+                <option value="古典">古典</option>
+                <option value="电子">电子</option>
+                <option value="说唱">说唱</option>
+                <option value="乡村">乡村</option>
+                <option value="蓝调">蓝调</option>
+                <option value="雷鬼">雷鬼</option>
+            </select>
+            <label for="edit-song-playcount">新播放量:</label>
+            <input type="text" id="edit-song-playcount" name="song-playcount"><br>
+            <button type="submit" class="niceBtn">修改</button>
+        </form>
+    </div>
+    <hr>
+
+    <div id="view-songs-section">
+        <h2>查看歌曲</h2>
+        <label for="search-query">搜索歌曲:</label>
+        <input type="text" id="search-query" name="search-query" class="outer_div">
+        <button id="search-songs" class="niceBtn">搜索</button>
+        <select id="genre-filter" class="outer_div" title="选择歌曲类型">
+            <option value="none">选择歌曲类型</option>
+            <option value="流行">流行</option>
+            <option value="民谣">民谣</option>
+            <option value="爵士">爵士</option>
+            <option value="古典">古典</option>
+            <option value="电子">电子</option>
+            <option value="说唱">说唱</option>
+            <option value="乡村">乡村</option>
+            <option value="蓝调">蓝调</option>
+            <option value="雷鬼">雷鬼</option>
+        </select>
+        <button id="view-all-songs" class="niceBtn">查看全部歌曲</button>
+        <button id="reset-songs" class="niceBtn">恢复原本歌曲数据</button>
+
+        <table id="song-list" border="1">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>歌名</th>
+                    <th>歌手</th>
+                    <th>歌曲类型</th>
+                    <th>播放量</th> 
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+   $(document).ready(function() {
+    // Hide sections initially
+    $('#add-song-section').hide();
+    $('#delete-songs-section').hide();
+    $('#edit-songs-section').hide();
+    $('#view-songs-section').hide();
+
+    // Show add song section
+    $('#addSongBtn').on('click', function() {
+        $('#add-song-section').show();
+        $('#view-songs-section').hide();
+        $('#edit-songs-section').hide();
+        $('#delete-songs-section').hide();
+    });
+
+    // Show view songs section
+    $('#viewSongsBtn').on('click', function() {
+        $('#add-song-section').hide();
+        $('#view-songs-section').show();
+        $('#edit-songs-section').hide();
+        $('#delete-songs-section').hide();
+        fetchSongs();
+    });
+
+    // Show edit songs section
+    $('#editSongBtn').on('click', function() {
+        $('#add-song-section').hide();
+        $('#view-songs-section').hide();
+        $('#edit-songs-section').show();
+        $('#delete-songs-section').hide();
+    });
+
+    // Show delete songs section
+    $('#deleteSongBtn').on('click', function() {
+        $('#add-song-section').hide();
+        $('#view-songs-section').hide();
+        $('#edit-songs-section').hide();
+        $('#delete-songs-section').show();
+    });
+
+    // Function to fetch and display songs
+    function fetchSongs(filterGenre = "", searchQuery = "") {
+        $.ajax({
+            url: '/songs',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                genre: filterGenre,
+                query: searchQuery
+            },
+            success: function(data) {
+                const songs = data.SongCollection.Song;
+                let html = '';
+                let songFound = false;
+                songs.forEach(song => {
+                    if ((!filterGenre || song.Genre[0] === filterGenre) && 
+                        (!searchQuery || song.Id[0].includes(searchQuery) || song.Title[0].includes(searchQuery) || song.Artist[0].includes(searchQuery) || song.Genre[0].includes(searchQuery))) {
+                        html += `<tr>
+                            <td>${song.Id[0]}</td>
+                            <td>${song.Title[0]}</td>
+                            <td>${song.Artist[0]}</td>
+                            <td>${song.Genre[0]}</td>
+                            <td>${song.PlayCount[0]}</td>
+                        </tr>`;
+                        songFound = true;
+                    }
+                });
+                if (!songFound) {
+                    alert('未找到匹配的歌曲。');
+                }
+                $('#song-list tbody').html(html);
+            },
+            error: function(error) {
+                console.error('Error fetching songs', error);
+            }
+        });
+    }
+
+    // Handle form submission to add a new song
+    $('#add-song-form').on('submit', function(event) {
+        event.preventDefault();
+        const newSong = {
+            Id: $('#add-song-id').val(),
+            Title: $('#title').val(),
+            Artist: $('#artist').val(),
+            Genre: $('#genre').val(),
+            PlayCount: $('#playcount').val()
+        };
+
+        // Check if the song already exists
+        const existingSongs = $('#song-list tbody tr').map(function() {
+            return {
+                Id: $(this).find('td:eq(0)').text(),
+                Title: $(this).find('td:eq(1)').text(),
+                Artist: $(this).find('td:eq(2)').text(),
+                Genre: $(this).find('td:eq(3)').text()
+            };
+        }).get();
+
+        const isDuplicate = existingSongs.some(song => {
+            return song.Id === newSong.Id ||song.Title === newSong.Title;
+        });
+
+        if (!isDuplicate && parseInt(newSong.PlayCount) > 0) {
+            $.ajax({
+                url: '/add-song',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(newSong),
+                success: function() {
+                    fetchSongs();
+                    alert('该歌曲已添加！');
+                },
+                error: function(error) {
+                    console.error('Error adding song', error);
+                }
+            });
+        }
+        else if((newSong.PlayCount) < 0){
+            alert('播放量不能小于0！');
+        }
+        else {
+            alert('该歌曲或ID已存在！');
+        }
+    });
+
+    // Handle form submission to edit a song
+    $('#edit-songs-form').on('submit', function(event) {
+        event.preventDefault();
+        const editedSong = {
+            Id: $('#edit-song-id').val(),
+            Title: $('#edit-song-title').val(),
+            Artist: $('#edit-song-artist').val(),
+            Genre: $('#edit-song-genre').val(),
+            PlayCount: $('#edit-song-playcount').val()
+        };
+
+        console.log('Editing song:', editedSong);
+        const existingSongs = $('#song-list tbody tr').map(function() {
+            return {
+                Id: $(this).find('td:eq(0)').text(),
+                Title: $(this).find('td:eq(1)').text(),
+                Artist: $(this).find('td:eq(2)').text(),
+                Genre: $(this).find('td:eq(3)').text()
+            };
+        }).get();
+        const isDuplicate = existingSongs.some(song => {
+            return song.Id === editedSong.Id;
+        });
+        if (isDuplicate && parseInt(editedSong.PlayCount) > 0) {
+            $.ajax({
+                url: '/edit-song',
+                method: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(editedSong),
+                success: function() {
+                    fetchSongs();
+                    alert('该歌曲已修改！');
+                },
+                error: function(error) {
+                    console.error('Error editing song', error);
+                }
+        });
+    }
+        else if((editedSong.PlayCount) < 0){
+                alert('播放量不能小于0！');
+            }
+        else {
+                alert('该歌曲ID不存在！');
+            }
+    });
+
+    // Handle genre filter change
+    $('#genre-filter').on('change', function() {
+        const selectedGenre = $(this).val();
+        fetchSongs(selectedGenre);
+    });
+
+    // Handle view all songs button
+    $('#view-all-songs').on('click', function() {
+        fetchSongs();
+    });
+
+    // Handle reset songs button
+    $('#reset-songs').on('click', function() {
+        const password = prompt('请输入密码以确认操作：');
+        if (password === '123456'){
+        $.ajax({
+            url: '/reset-songs',
+            method: 'POST',
+            success: function() {
+                fetchSongs();
+                alert('歌曲数据已恢复');
+            },
+            error: function(error) {
+                console.error('Error resetting songs', error);
+            }
+        });
+    }
+    else {
+        alert('密码错误，操作取消。');
+    }
+    });
+
+    // Handle search songs button
+    $('#search-songs').on('click', function() {
+        const searchQuery = $('#search-query').val();
+        fetchSongs("", searchQuery);
+    });
+
+    // Handle delete song
+    $('#delete-songs-form').on('submit', function(event) {
+        event.preventDefault();
+        const songId = $('#delete-song-id').val();
+
+        console.log('Deleting song with ID:', songId);
+
+        $.ajax({
+            url: `/delete-song/${songId}`,
+            method: 'DELETE',
+            success: function() {
+                fetchSongs();
+                alert('歌曲已删除。');
+            },
+            error: function(error) {
+                console.error('Error deleting song', error);
+                alert('删除歌曲时出现错误。请稍后重试。');
+            }
+        });
+    });
+});
+
+</script>
+</body>
+</html>
