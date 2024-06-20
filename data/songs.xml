@@ -209,4 +209,75 @@
     <Genre>乡村</Genre>
     <PlayCount>2100</PlayCount>
   </Song>
+  <Song>
+  <Id>32</Id>
+  <Title>蓝色夜晚</Title>
+  <Artist>蓝调大师</Artist>
+  <Genre>蓝调</Genre>
+  <PlayCount>1500</PlayCount>
+</Song>
+<Song>
+  <Id>33</Id>
+  <Title>忧郁之歌</Title>
+  <Artist>蓝调歌者</Artist>
+  <Genre>蓝调</Genre>
+  <PlayCount>1800</PlayCount>
+</Song>
+<Song>
+  <Id>34</Id>
+  <Title>午夜之蓝</Title>
+  <Artist>布鲁斯王子</Artist>
+  <Genre>蓝调</Genre>
+  <PlayCount>2300</PlayCount>
+</Song>
+<Song>
+  <Id>35</Id>
+  <Title>深蓝</Title>
+  <Artist>蓝调传奇</Artist>
+  <Genre>蓝调</Genre>
+  <PlayCount>2000</PlayCount>
+</Song>
+<Song>
+  <Id>36</Id>
+  <Title>蓝调心情</Title>
+  <Artist>布鲁斯之星</Artist>
+  <Genre>蓝调</Genre>
+  <PlayCount>1900</PlayCount>
+</Song>
+
+<Song>
+  <Id>37</Id>
+  <Title>阳光下的雷鬼</Title>
+  <Artist>雷鬼之王</Artist>
+  <Genre>雷鬼</Genre>
+  <PlayCount>2200</PlayCount>
+</Song>
+<Song>
+  <Id>38</Id>
+  <Title>自由的灵魂</Title>
+  <Artist>雷鬼歌手</Artist>
+  <Genre>雷鬼</Genre>
+  <PlayCount>2500</PlayCount>
+</Song>
+<Song>
+  <Id>39</Id>
+  <Title>夏日雷鬼</Title>
+  <Artist>雷鬼大师</Artist>
+  <Genre>雷鬼</Genre>
+  <PlayCount>2100</PlayCount>
+</Song>
+<Song>
+  <Id>40</Id>
+  <Title>雷鬼节奏</Title>
+  <Artist>雷鬼音乐人</Artist>
+  <Genre>雷鬼</Genre>
+  <PlayCount>2400</PlayCount>
+</Song>
+<Song>
+  <Id>41</Id>
+  <Title>雷鬼之声</Title>
+  <Artist>雷鬼传奇</Artist>
+  <Genre>雷鬼</Genre>
+  <PlayCount>2300</PlayCount>
+</Song>
 </SongCollection>
