@@ -2,6 +2,17 @@ $(document).ready(function() {
     let currentPage = 1;
     const songsPerPage = 10; 
 
+
+    $('.sidebar-trigger').mouseenter(function() {
+        $('.sidebar').stop(true, true).fadeIn();
+    });
+
+
+
+    $('.sidebar').mouseleave(function() {
+        $('.sidebar').stop(true, true).fadeOut();
+    });
+
     // Hide sections initially
     $('#add-song-section').hide();
     $('#delete-songs-section').hide();
@@ -160,6 +171,7 @@ $(document).ready(function() {
         };
 
         // Check if the song already exists
+        
         const existingSongs = $('#song-list tbody tr').map(function() {
             return {
                 Id: $(this).find('td:eq(0)').text(),
@@ -241,7 +253,7 @@ $(document).ready(function() {
             alert('该歌曲ID不存在！');
         }
     });
-
+    
     // Handle genre filter change
     $('#genre-filter').on('change', function() {
         const selectedGenre = $(this).val();

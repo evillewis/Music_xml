@@ -238,14 +238,6 @@
   <PlayCount>2000</PlayCount>
 </Song>
 <Song>
-  <Id>36</Id>
-  <Title>蓝调心情</Title>
-  <Artist>布鲁斯之星</Artist>
-  <Genre>蓝调</Genre>
-  <PlayCount>1900</PlayCount>
-</Song>
-
-<Song>
   <Id>37</Id>
   <Title>阳光下的雷鬼</Title>
   <Artist>雷鬼之王</Artist>
@@ -272,12 +264,5 @@
   <Artist>雷鬼音乐人</Artist>
   <Genre>雷鬼</Genre>
   <PlayCount>2400</PlayCount>
-</Song>
-<Song>
-  <Id>41</Id>
-  <Title>雷鬼之声</Title>
-  <Artist>雷鬼传奇</Artist>
-  <Genre>雷鬼</Genre>
-  <PlayCount>2300</PlayCount>
 </Song>
 </SongCollection>
