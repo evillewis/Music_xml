@@ -9,20 +9,22 @@
     <script src="server.js"></script>
 </head>
 <body>
+    <video autoplay muted loop class="video-background">
+        <source src="./music.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <h1 align="center">用户界面</h1>
     <hr>
     <button id="viewSongsBtn" class="niceBtn">查看歌曲</button>
-    <hr>
 
-    <div id="view-songs-section">
+    <div id="view-songs-section" class="view-songs-section">
         <h2>查看歌曲</h2>
         <label for="search-query">搜索歌曲:</label>
         <input type="text" id="search-query" name="search-query" class="outer_div">
         <button id="search-songs" class="niceBtn">搜索</button>
         <button id="view-all-songs" class="niceBtn">查看全部歌曲</button>
-
         <table id="song-list" border="1">
-            <thead>
+            <thead style="color: black;">
                 <tr>
                     <th>编号</th>
                     <th>歌名</th>
@@ -31,13 +33,21 @@
                     <th>播放量</th> 
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody class="tbody"></tbody>
         </table>
         <div id="pagination">
             <button id="prev-page" class="niceBtn">上一页</button>
             <span id="page-numbers" class="page-numbers"> </span>
             <button id="next-page" class="niceBtn">下一页</button>
+            显示数据行数：
+            <select id="songs-per-page" style="margin-left: 10px;">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="10" selected>10</option>
+            </select>
         </div>
     </div>
+    <hr id="hr">  
 </body>
 </html>

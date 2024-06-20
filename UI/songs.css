@@ -148,10 +148,12 @@ body , html {
 .page-number {
     margin: 0 5px;
     cursor: pointer;
+    color: #111;
 }
 
 .page-number.active {
     font-weight: bold;
+
 }
 
 .tbody{

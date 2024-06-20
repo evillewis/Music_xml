@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song List</title>
+    <title>Music管理后台</title>
     <link rel="stylesheet" href="songs.css">
     <script src="jquery-1.11.1.js"></script>
     <script src="admin.js"></script>
@@ -16,8 +16,8 @@
     <h1 align="center">管理员界面</h1>
     <hr id="hr">
 
-    <div class="sidebar-trigger">-</div>
-
+    <div class="sidebar-trigger">'<~.~>'</div>
+    
     <div class="sidebar">
         <button id="addSongBtn" class="niceBtn">添加歌曲</button>
         <button id="deleteSongBtn" class="niceBtn">删除歌曲</button>
@@ -66,11 +66,11 @@
         <h2>修改歌曲</h2>
         <form id="edit-songs-form">        
             <label for="edit-song-id">歌曲 ID:</label>
-            <input type="text" id="edit-song-id" name="song-id" class="outer_div">
+            <input type="text" id="edit-song-id" name="song-id" required class="outer_div">
             <label for="edit-song-title">新歌名:</label>
-            <input type="text" id="edit-song-title" name="song-title" class="outer_div">
+            <input type="text" id="edit-song-title" name="song-title" required class="outer_div">
             <label for="edit-song-artist">新歌手:</label>        
-            <input type="text" id="edit-song-artist" name="song-artist" class="outer_div"><br><p></p>
+            <input type="text" id="edit-song-artist" name="song-artist" required class="outer_div"><br><p></p>
             <label for="edit-song-genre">新歌曲类型:</label>
             <select id="edit-song-genre" name="edit-song-genre" required class="outer_div" title="选择歌曲类型">
                 <option value="none">选择歌曲类型</option>
@@ -114,6 +114,13 @@
             <button id="prev-page" class="niceBtn">上一页</button>
             <span id="page-numbers" class="page-numbers"> </span>
             <button id="next-page" class="niceBtn">下一页</button>
+            显示数据行数：
+            <select id="songs-per-page" style="margin-left: 10px;">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="10" selected>10</option>
+            </select>
         </div>
     </div>
     <hr id="hr">      
